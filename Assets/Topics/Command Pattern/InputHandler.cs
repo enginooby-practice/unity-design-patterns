@@ -7,42 +7,53 @@ public class InputHandler : MonoBehaviour
 {
     [SerializeField] List<GameObject> actors = new List<GameObject>();
     [ValueDropdown("actors")] [SerializeField] GameObject currentActor;
-    MovementCommand jumpCommand, kickCommand, punchCommand, goForwardsCommand, goBackwardsCommand, turnLeftCommand, turnRightCommand;
+
+    MovementCommand jumpCommand, kickCommand, punchCommand, goForwardsCommand;
+    List<MovementCommand> commandRecord = new List<MovementCommand>();
+
+    /* replay command record feature */
+    Coroutine replayCoroutine;
+    bool replayTriggered; // to insure replaying happens only once in Update()
+    bool isReplaying;
 
     void Start()
     {
     }
 
-    // Update is called once per frame
     void Update()
+    {
+        if (!isReplaying) ProcessInput();
+        if (replayTriggered) TryReplaying();
+    }
+
+    private void ProcessInput()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpCommand.Excecute();
+            commandRecord.Add(jumpCommand.Clone());
         }
         else if (Input.GetKeyDown(KeyCode.K))
         {
             kickCommand.Excecute();
+            commandRecord.Add(kickCommand.Clone());
+
         }
         else if (Input.GetKeyDown(KeyCode.P))
         {
             punchCommand.Excecute();
+            commandRecord.Add(punchCommand.Clone());
+
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
             goForwardsCommand.Excecute();
+            commandRecord.Add(goForwardsCommand.Clone());
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+
+        if (Input.GetKeyDown(KeyCode.X))
         {
-            goBackwardsCommand.Excecute();
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            turnLeftCommand.Excecute();
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            turnRightCommand.Excecute();
+            replayTriggered = true;
         }
     }
     private void OnValidate()
@@ -54,8 +65,32 @@ public class InputHandler : MonoBehaviour
         kickCommand = new MovementCommand(animator, "isKicking");
         punchCommand = new MovementCommand(animator, "isPunching");
         goForwardsCommand = new MovementCommand(animator, "isWalking");
-        goBackwardsCommand = new MovementCommand(animator, "isWalking");
-        turnLeftCommand = new MovementCommand(animator, "isWalking");
-        turnRightCommand = new MovementCommand(animator, "isWalking");
+    }
+
+    private void TryReplaying()
+    {
+        if (commandRecord.Count > 0)
+        {
+            replayTriggered = false;
+
+            if (replayCoroutine != null)
+            {
+                StopCoroutine(replayCoroutine);
+            }
+            replayCoroutine = StartCoroutine(ReplayCommands());
+        }
+    }
+
+    IEnumerator ReplayCommands()
+    {
+        for (int i = 0; i < commandRecord.Count; i++)
+        {
+            commandRecord[i].Excecute();
+            print(commandRecord[i].GetTrigger());
+            yield return new WaitForSeconds(1.5f);
+        }
+
+        commandRecord.Clear();
+        isReplaying = false;
     }
 }

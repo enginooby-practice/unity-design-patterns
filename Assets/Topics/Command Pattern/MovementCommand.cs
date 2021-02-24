@@ -4,22 +4,29 @@ using UnityEngine;
 
 public class MovementCommand : Command
 {
-    protected Animator animator;
-    protected string trigger;
+    private Animator _animator;
+    private string _trigger;
 
     public MovementCommand(Animator animator, string trigger)
     {
-        this.animator = animator;
-        this.trigger = trigger;
+        this._animator = animator;
+        this._trigger = trigger;
     }
     public override void Excecute()
     {
-        if (animator != null) animator.SetTrigger(trigger);
+        if (_animator != null) _animator.SetTrigger(_trigger);
     }
     public override void ExecuteReversely()
     {
         Debug.Log(">>> Execute reversely");
-        if (animator != null) animator.SetTrigger(trigger);
+        if (_animator != null) _animator.SetTrigger(_trigger);
+    }
+
+    public string GetTrigger() => this._trigger;
+
+    public MovementCommand Clone()
+    {
+        return new MovementCommand(this._animator, this._trigger);
     }
 }
 
@@ -29,6 +36,6 @@ public class JumpCommand : MovementCommand
     public override void Excecute()
     {
         Debug.Log(">>> Jump");
-        if (animator != null) animator.SetTrigger(trigger);
+        // if (animator != null) animator.SetTrigger(_trigger);
     }
 }
