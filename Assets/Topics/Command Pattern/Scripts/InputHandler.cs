@@ -5,78 +5,95 @@ using Sirenix.OdinInspector;
 
 public class InputHandler : MonoBehaviour
 {
-    [SerializeField] List<GameObject> actors = new List<GameObject>();
-    [ValueDropdown("actors")] [SerializeField] GameObject currentActor;
+    [SerializeField] List<PlayerController> actors = new List<PlayerController>();
+    [ValueDropdown("actors")] [SerializeField] PlayerController currentActor;
 
     MovementCommand jumpCommand, kickCommand, punchCommand, goForwardsCommand;
     List<MovementCommand> commandRecord = new List<MovementCommand>();
 
     /* replay command record feature */
     Coroutine replayCoroutine;
-    bool replayTriggered; // to insure replaying happens only once in Update()
     bool isReplaying;
 
-    void Start()
+    private Controls controls;
+
+    private void Awake()
     {
+        controls = new Controls();
+
+        controls.Player.Jump.performed += ctx => PerformJump(); // if(!isReplaying)
+        controls.Player.Kick.performed += ctx => PerformKick();
+        controls.Player.Punch.performed += ctx => PerformPunch();
+        controls.Player.GoForwards.performed += ctx => PerformGoForwards();
+
+        controls.Global.Replay.performed += ctx => PerformReplay();
+        controls.Global.UndoLast.performed += ctx => UndoLast();
+
     }
 
-    void Update()
+    private void OnEnable()
     {
-        if (!isReplaying) ProcessInput();
-        if (replayTriggered) TryReplaying();
+        controls.Enable();
     }
 
-    private void ProcessInput()
+    private void OnDisable()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            jumpCommand.Excecute();
-            commandRecord.Add(jumpCommand.Clone());
-        }
-        else if (Input.GetKeyDown(KeyCode.K))
-        {
-            kickCommand.Excecute();
-            commandRecord.Add(kickCommand.Clone());
-
-        }
-        else if (Input.GetKeyDown(KeyCode.P))
-        {
-            punchCommand.Excecute();
-            commandRecord.Add(punchCommand.Clone());
-
-        }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            goForwardsCommand.Excecute();
-            commandRecord.Add(goForwardsCommand.Clone());
-        }
-
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            replayTriggered = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.Z))
-        {
-            UndoLast();
-        }
+        controls.Disable();
     }
+
+    // TODO: Refactor movement methods
+    private void PerformJump()
+    {
+        // TODO: Refactor
+        jumpCommand.Excecute();
+        currentActor.Jump();
+
+        commandRecord.Add(jumpCommand.Clone());
+    }
+
+    private void PerformKick()
+    {
+        kickCommand.Excecute();
+        currentActor.Kick();
+        commandRecord.Add(kickCommand.Clone());
+    }
+
+    private void PerformPunch()
+    {
+        punchCommand.Excecute();
+        currentActor.Punch();
+        commandRecord.Add(punchCommand.Clone());
+    }
+
+    private void PerformGoForwards()
+    {
+        goForwardsCommand.Excecute();
+        currentActor.GoForwards();
+        commandRecord.Add(goForwardsCommand.Clone());
+    }
+
     private void OnValidate()
+    {
+        UpdateActor();
+    }
+
+    private void UpdateActor()
     {
         Camera.main.GetComponent<CameraFollow360>().player = currentActor.transform;
         Animator animator = currentActor.GetComponent<Animator>();
 
+        // TODO: Refactor
         jumpCommand = new MovementCommand(animator, "isJumping");
         kickCommand = new MovementCommand(animator, "isKicking");
         punchCommand = new MovementCommand(animator, "isPunching");
         goForwardsCommand = new MovementCommand(animator, "isWalking");
     }
 
-    private void TryReplaying()
+    private void PerformReplay()
     {
+        print("Replaying commands");
         if (commandRecord.Count > 0)
         {
-            replayTriggered = false;
-
             if (replayCoroutine != null)
             {
                 StopCoroutine(replayCoroutine);
@@ -100,6 +117,7 @@ public class InputHandler : MonoBehaviour
 
     private void UndoLast()
     {
+        print("Undoing last commands");
         if (commandRecord.Count == 0) return;
         MovementCommand lastCommand = commandRecord[commandRecord.Count - 1];
         lastCommand.Undo();

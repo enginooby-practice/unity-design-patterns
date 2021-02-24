@@ -8,14 +8,12 @@ public class PlayerController : MonoBehaviour
     float speed = 2.0f;
     float rotationSpeed = 100.0f;
 
-    // Start is called before the first frame update
     void Start()
     {
         anim = this.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void LateUpdate()
+    private void TestLateUpdate()
     {
         float translation = Input.GetAxis("Vertical") * speed;
         float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
@@ -44,6 +42,23 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("isPunching");
         else if (Input.GetKeyDown(KeyCode.K))
             anim.SetTrigger("isKicking");
-            
+
+    }
+
+    public void Jump()
+    {
+        print(gameObject.name + " is jumping");
+    }
+    public void Kick()
+    {
+        print(gameObject.name + " is kicking");
+    }
+    public void Punch()
+    {
+        print(gameObject.name + " is punching");
+    }
+    public void GoForwards()
+    {
+        print(gameObject.name + " is going forwards");
     }
 }
