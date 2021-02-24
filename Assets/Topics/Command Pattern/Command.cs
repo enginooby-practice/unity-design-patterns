@@ -5,5 +5,5 @@ using UnityEngine;
 public abstract class Command
 {
     public abstract void Excecute();
-    public abstract void ExecuteReversely();
+    public abstract void Undo();
 }

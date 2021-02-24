@@ -55,6 +55,10 @@ public class InputHandler : MonoBehaviour
         {
             replayTriggered = true;
         }
+        else if (Input.GetKeyDown(KeyCode.Z))
+        {
+            UndoLast();
+        }
     }
     private void OnValidate()
     {
@@ -87,10 +91,18 @@ public class InputHandler : MonoBehaviour
         {
             commandRecord[i].Excecute();
             print(commandRecord[i].GetTrigger());
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1f);
         }
 
         commandRecord.Clear();
         isReplaying = false;
+    }
+
+    private void UndoLast()
+    {
+        if (commandRecord.Count == 0) return;
+        MovementCommand lastCommand = commandRecord[commandRecord.Count - 1];
+        lastCommand.Undo();
+        commandRecord.Remove(lastCommand);
     }
 }

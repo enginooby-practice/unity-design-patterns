@@ -16,10 +16,10 @@ public class MovementCommand : Command
     {
         if (_animator != null) _animator.SetTrigger(_trigger);
     }
-    public override void ExecuteReversely()
+    public override void Undo()
     {
-        Debug.Log(">>> Execute reversely");
-        if (_animator != null) _animator.SetTrigger(_trigger);
+        // play animation with speed = -1
+        if (_animator != null) _animator.SetTrigger(_trigger + "R"); // string ref
     }
 
     public string GetTrigger() => this._trigger;
