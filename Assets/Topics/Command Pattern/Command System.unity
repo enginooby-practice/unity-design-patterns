@@ -513,6 +513,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b58a54e4e8184519bfb02932b81b381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &351420231 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 896643537356868711, guid: fa22a6f5df9b6428b9970f9e66c62c1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 351420227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &465199607
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,12 +797,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b58a54e4e8184519bfb02932b81b381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1300825484 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6626711202248471951, guid: 4ea1cc2a0893345dc8f80482fdf62b1d,
-    type: 3}
-  m_PrefabInstance: {fileID: 792514664}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1338232137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,7 +1593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fe3bcbf747fd4a07b71324c4c21ae71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1300825484}
+  player: {fileID: 351420231}
   distance: 3
   height: 2
   lookOffset: {x: 0, y: 1, z: 0}
@@ -1661,7 +1661,7 @@ MonoBehaviour:
   actors:
   - {fileID: 1300825483}
   - {fileID: 351420229}
-  currentActor: {fileID: 1300825483}
+  currentActor: {fileID: 351420229}
 --- !u!4 &2035287107
 Transform:
   m_ObjectHideFlags: 0
@@ -1750,7 +1750,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2035287106}
-        m_MethodName: PerformGoForwards
+        m_MethodName: PerformMoveForward
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

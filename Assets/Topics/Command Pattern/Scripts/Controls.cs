@@ -43,7 +43,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""GoForwards"",
+                    ""name"": ""MoveForward"",
                     ""type"": ""Button"",
                     ""id"": ""578965ce-24fd-4713-bf91-c7ae525db415"",
                     ""expectedControlType"": ""Button"",
@@ -92,7 +92,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
-                    ""action"": ""GoForwards"",
+                    ""action"": ""MoveForward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -196,7 +196,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Kick = m_Player.FindAction("Kick", throwIfNotFound: true);
         m_Player_Punch = m_Player.FindAction("Punch", throwIfNotFound: true);
-        m_Player_GoForwards = m_Player.FindAction("GoForwards", throwIfNotFound: true);
+        m_Player_MoveForward = m_Player.FindAction("MoveForward", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
@@ -256,7 +256,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Kick;
     private readonly InputAction m_Player_Punch;
-    private readonly InputAction m_Player_GoForwards;
+    private readonly InputAction m_Player_MoveForward;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -264,7 +264,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Kick => m_Wrapper.m_Player_Kick;
         public InputAction @Punch => m_Wrapper.m_Player_Punch;
-        public InputAction @GoForwards => m_Wrapper.m_Player_GoForwards;
+        public InputAction @MoveForward => m_Wrapper.m_Player_MoveForward;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -283,9 +283,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Punch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
                 @Punch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
                 @Punch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
-                @GoForwards.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGoForwards;
-                @GoForwards.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGoForwards;
-                @GoForwards.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGoForwards;
+                @MoveForward.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveForward;
+                @MoveForward.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveForward;
+                @MoveForward.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveForward;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -299,9 +299,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Punch.started += instance.OnPunch;
                 @Punch.performed += instance.OnPunch;
                 @Punch.canceled += instance.OnPunch;
-                @GoForwards.started += instance.OnGoForwards;
-                @GoForwards.performed += instance.OnGoForwards;
-                @GoForwards.canceled += instance.OnGoForwards;
+                @MoveForward.started += instance.OnMoveForward;
+                @MoveForward.performed += instance.OnMoveForward;
+                @MoveForward.canceled += instance.OnMoveForward;
             }
         }
     }
@@ -394,7 +394,7 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnKick(InputAction.CallbackContext context);
         void OnPunch(InputAction.CallbackContext context);
-        void OnGoForwards(InputAction.CallbackContext context);
+        void OnMoveForward(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

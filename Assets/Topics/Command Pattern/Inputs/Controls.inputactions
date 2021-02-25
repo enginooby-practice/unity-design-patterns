@@ -30,7 +30,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "GoForwards",
+                    "name": "MoveForward",
                     "type": "Button",
                     "id": "578965ce-24fd-4713-bf91-c7ae525db415",
                     "expectedControlType": "Button",
@@ -79,7 +79,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
-                    "action": "GoForwards",
+                    "action": "MoveForward",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
