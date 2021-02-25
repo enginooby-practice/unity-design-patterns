@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Sirenix.OdinInspector;
+using Michsky.UI.ModernUIPack;
 
 public class InputHandler : MonoBehaviour
 {
     // private static readonly PlayerActionCommand TestCommand = new PlayerActionCommand(delegate (PlayerAction actor) { actor.Jump(); });
-
+    [SerializeField] CustomDropdown actorSwitchDropdown;
     [SerializeField] List<Actor> actors = new List<Actor>();
     [ValueDropdown("actors")] [SerializeField] Actor currentActor;
 
@@ -24,6 +25,12 @@ public class InputHandler : MonoBehaviour
     {
         controls = new Controls();
         // SetupControlEvents();
+    }
+
+    public void HandleSwitchDropdown()
+    {
+        currentActor = actors[actorSwitchDropdown.selectedItemIndex];
+        OnCurrentActorUpdated();
     }
     private void OnEnable() { controls.Enable(); }
     private void OnDisable() { controls.Disable(); }
