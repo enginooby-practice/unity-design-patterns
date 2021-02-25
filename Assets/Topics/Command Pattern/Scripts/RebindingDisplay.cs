@@ -6,16 +6,21 @@ using TMPro;
 
 public class RebindingDisplay : MonoBehaviour
 {
-    [SerializeField] InputActionReference jumpAction;
+    [SerializeField] InputActionReference actionReference;
     [SerializeField] PlayerInput playerInput;
 
     [Header("UI")]
+    [SerializeField] string defaultKey = "Space";
     [SerializeField] TextMeshProUGUI jumpKeyLabel;
     [SerializeField] GameObject startBindingObject;
     [SerializeField] GameObject waitingForInputObject;
 
     private InputActionRebindingExtensions.RebindingOperation rebindingOperation;
 
+    private void Start()
+    {
+        jumpKeyLabel.text = defaultKey;
+    }
     public void StartRebinding()
     {
         // update UI
@@ -24,8 +29,8 @@ public class RebindingDisplay : MonoBehaviour
 
         playerInput.SwitchCurrentActionMap("Player");
 
-        jumpAction.action.Disable();
-        rebindingOperation = jumpAction.action
+        actionReference.action.Disable();
+        rebindingOperation = actionReference.action
             .PerformInteractiveRebinding()
             .WithControlsExcluding("Mouse")
             .WithCancelingThrough("<Keyboard>/escape")
@@ -38,11 +43,11 @@ public class RebindingDisplay : MonoBehaviour
     private void FinishRebinding()
     {
         rebindingOperation.Dispose();
-        jumpAction.action.Enable();
+        actionReference.action.Enable();
 
         // update UI
-        int bindingIndex = jumpAction.action.GetBindingIndexForControl(jumpAction.action.controls[0]);
-        jumpKeyLabel.text = InputControlPath.ToHumanReadableString(jumpAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
+        int bindingIndex = actionReference.action.GetBindingIndexForControl(actionReference.action.controls[0]);
+        jumpKeyLabel.text = InputControlPath.ToHumanReadableString(actionReference.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
         startBindingObject.SetActive(true);
         waitingForInputObject.SetActive(false);
     }

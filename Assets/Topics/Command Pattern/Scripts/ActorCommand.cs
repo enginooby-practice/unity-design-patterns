@@ -6,7 +6,6 @@ public abstract class ActorCommand : Command
 {
     protected Actor actor;
     public ActorCommand(Actor actor) { this.actor = actor; }
-
     public void SetActor(Actor newActor) => this.actor = newActor;
 }
 

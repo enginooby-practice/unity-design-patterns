@@ -88,8 +88,8 @@ public class InputHandler : MonoBehaviour
         commandRecord.Remove(lastCommand);
     }
 
-    public void OnValidate() { UpdateActor(); }
-    private void UpdateActor()
+    public void OnValidate() { OnCurrentActorUpdated(); }
+    private void OnCurrentActorUpdated()
     {
         Camera.main.GetComponent<CameraFollow360>().player = currentActor.transform;
         Animator animator = currentActor.GetComponent<Animator>();
