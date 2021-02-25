@@ -52,17 +52,6 @@
                 },
                 {
                     "name": "",
-                    "id": "f63b85a8-a84b-4e23-a1bb-1c19e79cc411",
-                    "path": "<Keyboard>/j",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "15af4d69-5407-47aa-9f3c-17bc5bcfa1f3",
                     "path": "<Keyboard>/k",
                     "interactions": "",

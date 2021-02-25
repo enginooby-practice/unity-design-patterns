@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Sirenix.OdinInspector;
 
 public class InputHandler : MonoBehaviour
@@ -16,18 +17,21 @@ public class InputHandler : MonoBehaviour
     bool isReplaying;
 
     private Controls controls;
+    private PlayerInput playerInput;
 
     private void Awake()
     {
         controls = new Controls();
+        playerInput = GetComponent<PlayerInput>();
 
-        controls.Player.Jump.performed += ctx => PerformJump(); // if(!isReplaying)
-        controls.Player.Kick.performed += ctx => PerformKick();
-        controls.Player.Punch.performed += ctx => PerformPunch();
-        controls.Player.GoForwards.performed += ctx => PerformGoForwards();
+        // to enable rebinding, register events in Player Input component (Unity events)
+        // controls.Player.Jump.performed += ctx => PerformJump(ctx); // if(!isReplaying)
+        // controls.Player.Kick.performed += ctx => PerformKick();
+        // controls.Player.Punch.performed += ctx => PerformPunch();
+        // controls.Player.GoForwards.performed += ctx => PerformGoForwards();
 
-        controls.Global.Replay.performed += ctx => PerformReplay();
-        controls.Global.UndoLast.performed += ctx => UndoLast();
+        // controls.Global.Replay.performed += ctx => PerformReplay();
+        // controls.Global.UndoLast.performed += ctx => UndoLast();
 
     }
 
@@ -42,8 +46,11 @@ public class InputHandler : MonoBehaviour
     }
 
     // TODO: Refactor movement methods
-    private void PerformJump()
+    public void PerformJump(InputAction.CallbackContext context)
     {
+        // playerInput.SwitchCurrentActionMap("Player");
+        // perform on key up
+        if (!context.performed) return;
         // TODO: Refactor
         jumpCommand.Excecute();
         currentActor.Jump();
@@ -51,28 +58,31 @@ public class InputHandler : MonoBehaviour
         commandRecord.Add(jumpCommand.Clone());
     }
 
-    private void PerformKick()
+    public void PerformKick(InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
         kickCommand.Excecute();
         currentActor.Kick();
         commandRecord.Add(kickCommand.Clone());
     }
 
-    private void PerformPunch()
+    public void PerformPunch(InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
         punchCommand.Excecute();
         currentActor.Punch();
         commandRecord.Add(punchCommand.Clone());
     }
 
-    private void PerformGoForwards()
+    public void PerformGoForwards(InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
         goForwardsCommand.Excecute();
         currentActor.GoForwards();
         commandRecord.Add(goForwardsCommand.Clone());
     }
 
-    private void OnValidate()
+    public void OnValidate()
     {
         UpdateActor();
     }
@@ -89,8 +99,9 @@ public class InputHandler : MonoBehaviour
         goForwardsCommand = new MovementCommand(animator, "isWalking");
     }
 
-    private void PerformReplay()
+    public void PerformReplay(InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
         print("Replaying commands");
         if (commandRecord.Count > 0)
         {
@@ -115,8 +126,12 @@ public class InputHandler : MonoBehaviour
         isReplaying = false;
     }
 
-    private void UndoLast()
+    public void UndoLast(InputAction.CallbackContext context)
     {
+        // TODO: Switch to Global map to perform this method
+        // playerInput.SwitchCurrentActionMap("Global");
+
+        if (!context.performed) return;
         print("Undoing last commands");
         if (commandRecord.Count == 0) return;
         MovementCommand lastCommand = commandRecord[commandRecord.Count - 1];
