@@ -69,7 +69,7 @@ public class Actor : MonoBehaviour // contains all actions of the game object
     }
     public void MoveForward(ActionModes mode = ActionModes.NORMAL)
     {
-        currentTrigger = (mode == ActionModes.NORMAL) ? "isWalking" : "isWalking";
+        currentTrigger = (mode == ActionModes.NORMAL) ? "isWalking" : "isWalkingR";
         OnTriggerUpdated();
 
         // fix y offset of animation

@@ -36,6 +36,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Replay",
+                    "type": "Button",
+                    "id": "3c43063d-c2dd-4829-a0a4-6725fdcc7c92",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "UndoLast",
+                    "type": "Button",
+                    "id": "00317204-f6c1-4020-9c24-cb984665235a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -45,7 +61,7 @@
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -56,7 +72,7 @@
                     "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Kick",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -67,7 +83,7 @@
                     "path": "<Keyboard>/p",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Punch",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -78,8 +94,30 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "MoveForward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "727951cd-53c2-414a-8789-8b2d54d823d2",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Replay",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "21b22a7a-865d-4ba3-8a45-3b061d6de08e",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UndoLast",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -107,52 +145,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Global",
-            "id": "468c947d-529d-432f-b49e-e42737274dcf",
-            "actions": [
-                {
-                    "name": "Replay",
-                    "type": "Button",
-                    "id": "1818918e-5325-466d-a7b4-4cceb23793da",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "UndoLast",
-                    "type": "Button",
-                    "id": "c7cabc84-5126-4e81-b22c-a14686782ec2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "4974c627-f75a-4745-8db3-492cf0c08c90",
-                    "path": "<Keyboard>/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Replay",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cd969258-d7cd-43b9-b575-89d0fa39cd76",
-                    "path": "<Keyboard>/z",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "UndoLast",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

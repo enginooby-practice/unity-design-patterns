@@ -12,7 +12,7 @@ public class InputHandler : MonoBehaviour
     [ValueDropdown("actors")] [SerializeField] Actor currentActor;
 
     ActorCommand jumpCommand, kickCommand, punchCommand, moveForwardCommand;
-    List<ActorCommand> commandRecord = new List<ActorCommand>();
+    List<Command> commandRecord = new List<Command>();
 
     /* replay command record feature */
     Coroutine replayCoroutine;
@@ -23,12 +23,12 @@ public class InputHandler : MonoBehaviour
     private void Awake()
     {
         controls = new Controls();
-
-        // to enable rebinding, register events in Player Input component (Unity events)
         // SetupControlEvents();
     }
     private void OnEnable() { controls.Enable(); }
     private void OnDisable() { controls.Disable(); }
+
+    // to enable rebinding, register events in Player Input component (Unity events) instead
     private void SetupControlEvents()
     {
         controls.Player.Jump.performed += ctx => PerformJump(ctx); // if(!isReplaying)
@@ -36,10 +36,9 @@ public class InputHandler : MonoBehaviour
         controls.Player.Punch.performed += ctx => PerformPunch(ctx);
         controls.Player.MoveForward.performed += ctx => PerformMoveForward(ctx);
 
-        controls.Global.Replay.performed += ctx => PerformReplay(ctx);
-        controls.Global.UndoLast.performed += ctx => PerformUndoLast(ctx);
+        controls.Player.Replay.performed += ctx => PerformReplay(ctx);
+        controls.Player.UndoLast.performed += ctx => PerformUndoLast(ctx);
     }
-
     public void ExcecutePlayerAction(InputAction.CallbackContext context, ActorCommand command)
     {
         // perform only on key up (while not context.performed or key down anymore)
@@ -52,19 +51,6 @@ public class InputHandler : MonoBehaviour
     public void PerformKick(InputAction.CallbackContext context) => ExcecutePlayerAction(context, kickCommand);
     public void PerformPunch(InputAction.CallbackContext context) => ExcecutePlayerAction(context, punchCommand);
     public void PerformMoveForward(InputAction.CallbackContext context) => ExcecutePlayerAction(context, moveForwardCommand);
-    public void OnValidate() { UpdateActor(); }
-    private void UpdateActor()
-    {
-        Camera.main.GetComponent<CameraFollow360>().player = currentActor.transform;
-        Animator animator = currentActor.GetComponent<Animator>();
-
-        // TODO: Refactor
-        jumpCommand = new JumpCommand(currentActor);
-        kickCommand = new KickCommand(currentActor);
-        punchCommand = new PunchCommand(currentActor);
-        moveForwardCommand = new MoveForwardCommand(currentActor);
-    }
-
     public void PerformReplay(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
@@ -93,14 +79,26 @@ public class InputHandler : MonoBehaviour
 
     public void PerformUndoLast(InputAction.CallbackContext context)
     {
-        // TODO: Switch to Global map to perform this method
-        // playerInput.SwitchCurrentActionMap("Global");
-
         if (!context.performed) return;
+
         print("Undoing last commands");
         if (commandRecord.Count == 0) return;
-        ActorCommand lastCommand = commandRecord[commandRecord.Count - 1];
+        Command lastCommand = commandRecord[commandRecord.Count - 1];
         lastCommand.Undo();
         commandRecord.Remove(lastCommand);
     }
+
+    public void OnValidate() { UpdateActor(); }
+    private void UpdateActor()
+    {
+        Camera.main.GetComponent<CameraFollow360>().player = currentActor.transform;
+        Animator animator = currentActor.GetComponent<Animator>();
+
+        // TODO: Refactor
+        jumpCommand = new JumpCommand(currentActor);
+        kickCommand = new KickCommand(currentActor);
+        punchCommand = new PunchCommand(currentActor);
+        moveForwardCommand = new MoveForwardCommand(currentActor);
+    }
+
 }

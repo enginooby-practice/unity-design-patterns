@@ -22,7 +22,7 @@ public class RebindingDisplay : MonoBehaviour
         startBindingObject.SetActive(false);
         waitingForInputObject.SetActive(true);
 
-        playerInput.SwitchCurrentActionMap("Global");
+        playerInput.SwitchCurrentActionMap("Player");
 
         jumpAction.action.Disable();
         rebindingOperation = jumpAction.action

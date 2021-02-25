@@ -49,6 +49,22 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Replay"",
+                    ""type"": ""Button"",
+                    ""id"": ""3c43063d-c2dd-4829-a0a4-6725fdcc7c92"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""UndoLast"",
+                    ""type"": ""Button"",
+                    ""id"": ""00317204-f6c1-4020-9c24-cb984665235a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -58,7 +74,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard & Mouse"",
+                    ""groups"": """",
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -69,7 +85,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/k"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard & Mouse"",
+                    ""groups"": """",
                     ""action"": ""Kick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -80,7 +96,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/p"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard & Mouse"",
+                    ""groups"": """",
                     ""action"": ""Punch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -91,8 +107,30 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard & Mouse"",
+                    ""groups"": """",
                     ""action"": ""MoveForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""727951cd-53c2-414a-8789-8b2d54d823d2"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Replay"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""21b22a7a-865d-4ba3-8a45-3b061d6de08e"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UndoLast"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -124,52 +162,6 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
-        },
-        {
-            ""name"": ""Global"",
-            ""id"": ""468c947d-529d-432f-b49e-e42737274dcf"",
-            ""actions"": [
-                {
-                    ""name"": ""Replay"",
-                    ""type"": ""Button"",
-                    ""id"": ""1818918e-5325-466d-a7b4-4cceb23793da"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""UndoLast"",
-                    ""type"": ""Button"",
-                    ""id"": ""c7cabc84-5126-4e81-b22c-a14686782ec2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""4974c627-f75a-4745-8db3-492cf0c08c90"",
-                    ""path"": ""<Keyboard>/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard & Mouse"",
-                    ""action"": ""Replay"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cd969258-d7cd-43b9-b575-89d0fa39cd76"",
-                    ""path"": ""<Keyboard>/z"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard & Mouse"",
-                    ""action"": ""UndoLast"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
         }
     ],
     ""controlSchemes"": [
@@ -197,13 +189,11 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_Kick = m_Player.FindAction("Kick", throwIfNotFound: true);
         m_Player_Punch = m_Player.FindAction("Punch", throwIfNotFound: true);
         m_Player_MoveForward = m_Player.FindAction("MoveForward", throwIfNotFound: true);
+        m_Player_Replay = m_Player.FindAction("Replay", throwIfNotFound: true);
+        m_Player_UndoLast = m_Player.FindAction("UndoLast", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
-        // Global
-        m_Global = asset.FindActionMap("Global", throwIfNotFound: true);
-        m_Global_Replay = m_Global.FindAction("Replay", throwIfNotFound: true);
-        m_Global_UndoLast = m_Global.FindAction("UndoLast", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -257,6 +247,8 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Kick;
     private readonly InputAction m_Player_Punch;
     private readonly InputAction m_Player_MoveForward;
+    private readonly InputAction m_Player_Replay;
+    private readonly InputAction m_Player_UndoLast;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -265,6 +257,8 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Kick => m_Wrapper.m_Player_Kick;
         public InputAction @Punch => m_Wrapper.m_Player_Punch;
         public InputAction @MoveForward => m_Wrapper.m_Player_MoveForward;
+        public InputAction @Replay => m_Wrapper.m_Player_Replay;
+        public InputAction @UndoLast => m_Wrapper.m_Player_UndoLast;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -286,6 +280,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @MoveForward.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveForward;
                 @MoveForward.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveForward;
                 @MoveForward.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveForward;
+                @Replay.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReplay;
+                @Replay.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReplay;
+                @Replay.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReplay;
+                @UndoLast.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUndoLast;
+                @UndoLast.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUndoLast;
+                @UndoLast.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUndoLast;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -302,6 +302,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @MoveForward.started += instance.OnMoveForward;
                 @MoveForward.performed += instance.OnMoveForward;
                 @MoveForward.canceled += instance.OnMoveForward;
+                @Replay.started += instance.OnReplay;
+                @Replay.performed += instance.OnReplay;
+                @Replay.canceled += instance.OnReplay;
+                @UndoLast.started += instance.OnUndoLast;
+                @UndoLast.performed += instance.OnUndoLast;
+                @UndoLast.canceled += instance.OnUndoLast;
             }
         }
     }
@@ -339,47 +345,6 @@ public class @Controls : IInputActionCollection, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
-
-    // Global
-    private readonly InputActionMap m_Global;
-    private IGlobalActions m_GlobalActionsCallbackInterface;
-    private readonly InputAction m_Global_Replay;
-    private readonly InputAction m_Global_UndoLast;
-    public struct GlobalActions
-    {
-        private @Controls m_Wrapper;
-        public GlobalActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Replay => m_Wrapper.m_Global_Replay;
-        public InputAction @UndoLast => m_Wrapper.m_Global_UndoLast;
-        public InputActionMap Get() { return m_Wrapper.m_Global; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(GlobalActions set) { return set.Get(); }
-        public void SetCallbacks(IGlobalActions instance)
-        {
-            if (m_Wrapper.m_GlobalActionsCallbackInterface != null)
-            {
-                @Replay.started -= m_Wrapper.m_GlobalActionsCallbackInterface.OnReplay;
-                @Replay.performed -= m_Wrapper.m_GlobalActionsCallbackInterface.OnReplay;
-                @Replay.canceled -= m_Wrapper.m_GlobalActionsCallbackInterface.OnReplay;
-                @UndoLast.started -= m_Wrapper.m_GlobalActionsCallbackInterface.OnUndoLast;
-                @UndoLast.performed -= m_Wrapper.m_GlobalActionsCallbackInterface.OnUndoLast;
-                @UndoLast.canceled -= m_Wrapper.m_GlobalActionsCallbackInterface.OnUndoLast;
-            }
-            m_Wrapper.m_GlobalActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Replay.started += instance.OnReplay;
-                @Replay.performed += instance.OnReplay;
-                @Replay.canceled += instance.OnReplay;
-                @UndoLast.started += instance.OnUndoLast;
-                @UndoLast.performed += instance.OnUndoLast;
-                @UndoLast.canceled += instance.OnUndoLast;
-            }
-        }
-    }
-    public GlobalActions @Global => new GlobalActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -395,14 +360,11 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnKick(InputAction.CallbackContext context);
         void OnPunch(InputAction.CallbackContext context);
         void OnMoveForward(InputAction.CallbackContext context);
+        void OnReplay(InputAction.CallbackContext context);
+        void OnUndoLast(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
         void OnNewaction(InputAction.CallbackContext context);
-    }
-    public interface IGlobalActions
-    {
-        void OnReplay(InputAction.CallbackContext context);
-        void OnUndoLast(InputAction.CallbackContext context);
     }
 }

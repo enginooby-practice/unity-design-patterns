@@ -1779,12 +1779,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 1818918e-5325-466d-a7b4-4cceb23793da
-    m_ActionName: Global/Replay[/Keyboard/x]
+    m_ActionId: 3c43063d-c2dd-4829-a0a4-6725fdcc7c92
+    m_ActionName: Player/Replay[/Keyboard/x]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2035287106}
-        m_MethodName: UndoLast
+        m_MethodName: PerformUndoLast
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1794,8 +1794,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: c7cabc84-5126-4e81-b22c-a14686782ec2
-    m_ActionName: Global/UndoLast[/Keyboard/z]
+    m_ActionId: 00317204-f6c1-4020-9c24-cb984665235a
+    m_ActionName: Player/UndoLast[/Keyboard/z]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard & Mouse
   m_DefaultActionMap: Player
