@@ -12,7 +12,7 @@ public class InputHandler : MonoBehaviour
     [SerializeField] List<Actor> actors = new List<Actor>();
     [ValueDropdown("actors")] [SerializeField] Actor currentActor;
 
-    ActorCommand jumpCommand, kickCommand, punchCommand, moveForwardCommand;
+    Command jumpCommand, kickCommand, punchCommand, moveForwardCommand;
     List<Command> commandRecord = new List<Command>();
 
     /* replay command record feature */
@@ -46,18 +46,18 @@ public class InputHandler : MonoBehaviour
         controls.Player.Replay.performed += ctx => PerformReplay(ctx);
         controls.Player.UndoLast.performed += ctx => PerformUndoLast(ctx);
     }
-    public void ExcecutePlayerAction(InputAction.CallbackContext context, ActorCommand command)
+    public void ExecuteCommandOnKeyUp(InputAction.CallbackContext context, Command command)
     {
         // perform only on key up (while not context.performed or key down anymore)
         if (!context.performed) return;
 
-        command.Excecute();
+        command.Execute();
         commandRecord.Add(command.Clone());
     }
-    public void PerformJump(InputAction.CallbackContext context) => ExcecutePlayerAction(context, jumpCommand);
-    public void PerformKick(InputAction.CallbackContext context) => ExcecutePlayerAction(context, kickCommand);
-    public void PerformPunch(InputAction.CallbackContext context) => ExcecutePlayerAction(context, punchCommand);
-    public void PerformMoveForward(InputAction.CallbackContext context) => ExcecutePlayerAction(context, moveForwardCommand);
+    public void PerformJump(InputAction.CallbackContext context) => ExecuteCommandOnKeyUp(context, jumpCommand);
+    public void PerformKick(InputAction.CallbackContext context) => ExecuteCommandOnKeyUp(context, kickCommand);
+    public void PerformPunch(InputAction.CallbackContext context) => ExecuteCommandOnKeyUp(context, punchCommand);
+    public void PerformMoveForward(InputAction.CallbackContext context) => ExecuteCommandOnKeyUp(context, moveForwardCommand);
     public void PerformReplay(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
@@ -76,7 +76,7 @@ public class InputHandler : MonoBehaviour
     {
         for (int i = 0; i < commandRecord.Count; i++)
         {
-            commandRecord[i].Excecute();
+            commandRecord[i].Execute();
             yield return new WaitForSeconds(1f);
         }
 
@@ -99,7 +99,6 @@ public class InputHandler : MonoBehaviour
     private void OnCurrentActorUpdated()
     {
         Camera.main.GetComponent<CameraFollow360>().player = currentActor.transform;
-        Animator animator = currentActor.GetComponent<Animator>();
 
         // TODO: Refactor
         jumpCommand = new JumpCommand(currentActor);

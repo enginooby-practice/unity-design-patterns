@@ -55,7 +55,7 @@ namespace Michsky.UI.ModernUIPack
             if (dynamicUpdateEnabled == false)
             {
                 this.enabled = true;
-                UpdateDropdown();
+                // UpdateDropdown();
             }
         }
 

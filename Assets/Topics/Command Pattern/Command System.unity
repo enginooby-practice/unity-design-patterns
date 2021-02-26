@@ -473,10 +473,10 @@ RectTransform:
   m_Father: {fileID: 504245077}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000022888, y: -78}
-  m_SizeDelta: {x: 168.6654, y: 55}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 169, y: -60}
+  m_SizeDelta: {x: 168.66553, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &313223549
 Animator:
@@ -790,7 +790,7 @@ PrefabInstance:
     - target: {fileID: 7929557971532712561, guid: 57abcd907e8449f4aafeb265059f9ea4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1033
+      value: -914
       objectReference: {fileID: 0}
     - target: {fileID: 7929557971532712561, guid: 57abcd907e8449f4aafeb265059f9ea4,
         type: 3}
@@ -1057,7 +1057,7 @@ PrefabInstance:
     - target: {fileID: 7929557971532712561, guid: 57abcd907e8449f4aafeb265059f9ea4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -700
+      value: -614
       objectReference: {fileID: 0}
     - target: {fileID: 7929557971532712561, guid: 57abcd907e8449f4aafeb265059f9ea4,
         type: 3}
@@ -1201,10 +1201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2244, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2333,7 +2333,7 @@ PrefabInstance:
     - target: {fileID: 7929557971532712561, guid: 57abcd907e8449f4aafeb265059f9ea4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -866
+      value: -764
       objectReference: {fileID: 0}
     - target: {fileID: 7929557971532712561, guid: 57abcd907e8449f4aafeb265059f9ea4,
         type: 3}
@@ -2878,7 +2878,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: 0.5}
+  m_AnchoredPosition: {x: 37.5, y: 0}
   m_SizeDelta: {x: -100, y: 40}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1438348678
@@ -2964,7 +2964,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 1}
+  m_margin: {x: 0, y: -2.701416, z: 0, w: 1}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3017,7 +3017,7 @@ PrefabInstance:
     - target: {fileID: 7929557971532712561, guid: 57abcd907e8449f4aafeb265059f9ea4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1369
+      value: -1214
       objectReference: {fileID: 0}
     - target: {fileID: 7929557971532712561, guid: 57abcd907e8449f4aafeb265059f9ea4,
         type: 3}
@@ -3117,7 +3117,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1454388799
@@ -3572,7 +3572,7 @@ PrefabInstance:
     - target: {fileID: 7929557971532712561, guid: 57abcd907e8449f4aafeb265059f9ea4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1202
+      value: -1064
       objectReference: {fileID: 0}
     - target: {fileID: 7929557971532712561, guid: 57abcd907e8449f4aafeb265059f9ea4,
         type: 3}
@@ -3936,7 +3936,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2129875894}
   m_HandleRect: {fileID: 2129875893}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4518,7 +4518,7 @@ PrefabInstance:
     - target: {fileID: 7929557971532712561, guid: 57abcd907e8449f4aafeb265059f9ea4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -533
+      value: -464
       objectReference: {fileID: 0}
     - target: {fileID: 7929557971532712561, guid: 57abcd907e8449f4aafeb265059f9ea4,
         type: 3}
