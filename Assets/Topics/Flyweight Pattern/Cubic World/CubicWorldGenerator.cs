@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldGenerator : MonoBehaviour
+public class CubicWorldGenerator : MonoBehaviour
 {
     public int width;
     public int depth;

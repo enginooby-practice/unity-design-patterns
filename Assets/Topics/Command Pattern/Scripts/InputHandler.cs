@@ -98,7 +98,7 @@ public class InputHandler : MonoBehaviour
     public void OnValidate() { OnCurrentActorUpdated(); }
     private void OnCurrentActorUpdated()
     {
-        Camera.main.GetComponent<CameraFollow360>().player = currentActor.transform;
+        Camera.main.GetComponent<CameraFollow360v2>().player = currentActor.transform;
 
         // TODO: Refactor
         jumpCommand = new JumpCommand(currentActor);
