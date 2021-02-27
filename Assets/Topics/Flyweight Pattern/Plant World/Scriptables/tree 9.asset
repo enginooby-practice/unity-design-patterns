@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4f7c9824cfa0a408721b9084038972, type: 3}
   m_Name: tree 9
   m_EditorClassIdentifier: 
-  planName: Presleet
-  plantThreat: 1
+  planName: Aeblislebore
+  plantThreat: 3
   icon: {fileID: 2800000, guid: b02c39aa8f100405c8b35631efb0d51f, type: 3}

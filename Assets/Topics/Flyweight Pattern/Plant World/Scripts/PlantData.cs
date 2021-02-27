@@ -7,7 +7,7 @@ public class PlantData : ScriptableObject
 {
     public enum Threat { NONE, LOW, MEDIUM, HIGH }
 
-    [SerializeField] string planName;
-    [SerializeField] Threat plantThreat;
-    [SerializeField] Texture icon;
+    [SerializeField] public string planName;
+    [SerializeField] public Threat plantThreat;
+    [SerializeField] public Texture icon;
 }
