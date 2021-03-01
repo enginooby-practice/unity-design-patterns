@@ -4,7 +4,6 @@ using Unity.Entities;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.Entities;
 
 
 [RequiresEntityConversion]
@@ -35,10 +34,4 @@ public class WorldGeneratorProxy : MonoBehaviour, IDeclareReferencedPrefabs, ICo
     }
 }
 
-public struct WorldGeneratorComponent : IComponentData
-{
-    public Entity eCubePrefab;
-    public float eNoiseFactor;
-    public int eWidth;
-    public int eDepth;
-}
+

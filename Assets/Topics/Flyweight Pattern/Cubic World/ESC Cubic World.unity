@@ -506,8 +506,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1235227889}
   - component: {fileID: 1235227888}
-  - component: {fileID: 1235227891}
   - component: {fileID: 1235227890}
+  - component: {fileID: 1235227892}
   m_Layer: 0
   m_Name: World Generator
   m_TagString: Untagged
@@ -528,10 +528,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noiseFactor: 1.3
-  width: 100
+  width: 1000
   depth: 100
   usePrefab: 1
-  cubePrefab: {fileID: 7992831467603216543, guid: f19e829e24ede8442b5a8140467176f4,
+  cubePrefab: {fileID: 7992831467603216543, guid: 49f0cd6161293c842987c3a8bede2a91,
     type: 3}
 --- !u!4 &1235227889
 Transform:
@@ -560,7 +560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConversionMode: 0
---- !u!114 &1235227891
+--- !u!114 &1235227892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -569,13 +569,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1235227887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65de3380c99811847bfaa1c643253514, type: 3}
+  m_Script: {fileID: 11500000, guid: bdc072c28a99408438128f2e1efaf931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noiseFactor: 1.3
-  width: 100
-  depth: 100
-  cubePrefab: {fileID: 0}
+  eCubePrefab: {fileID: 7992831467603216543, guid: 49f0cd6161293c842987c3a8bede2a91,
+    type: 3}
+  eNoiseFactor: 3
+  eWidth: 5
+  eDepth: 5
 --- !u!1001 &1858785358
 PrefabInstance:
   m_ObjectHideFlags: 0
