@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Sirenix.OdinInspector;
 using Michsky.UI.ModernUIPack;
+using Beautify.Universal;
 
 public class InputHandler : MonoBehaviour
 {
@@ -19,11 +20,14 @@ public class InputHandler : MonoBehaviour
     Coroutine replayCoroutine;
     bool isReplaying;
 
+    private BeautifySettings beautifySettings;
+
     private Controls controls;
 
     private void Awake()
     {
         controls = new Controls();
+        beautifySettings = FindObjectOfType<BeautifySettings>().GetComponent<BeautifySettings>();
         // SetupControlEvents();
     }
 
@@ -100,6 +104,7 @@ public class InputHandler : MonoBehaviour
     {
         if (currentActor == null) return;
         Camera.main.GetComponent<CameraFollow360>().player = currentActor.transform;
+        if(beautifySettings) beautifySettings.depthOfFieldTarget = currentActor.transform;
 
         // TODO: Refactor
         jumpCommand = new JumpCommand(currentActor);
