@@ -758,13 +758,13 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   depthOfFieldForegroundBlurHQ:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   depthOfFieldForegroundDistance:
-    m_OverrideState: 0
-    m_Value: 0.25
+    m_OverrideState: 1
+    m_Value: 0.83
   depthOfFieldBokeh:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   depthOfFieldBokehThreshold:
     m_OverrideState: 0
