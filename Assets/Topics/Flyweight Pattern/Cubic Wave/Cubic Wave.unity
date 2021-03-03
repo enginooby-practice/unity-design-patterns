@@ -150,12 +150,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d2e6bee4e85124192b8340ddb657be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitMesh: {fileID: 0}
-  unitMaterial: {fileID: 0}
+  unitMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  unitMaterial: {fileID: 2100000, guid: 4ee88b8199c013845835a57cb9520362, type: 2}
   gameObjectPrefab: {fileID: 2395326528508252773, guid: 7d3c8d39adbce9046a88a7580be4e115,
     type: 3}
-  xSize: 20
-  ySize: 20
+  xSize: 100
+  ySize: 100
   spacing: 1
 --- !u!4 &64976779
 Transform:
@@ -317,6 +317,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1438334901792515114, guid: fb3631df4b066cc49ba3c355ae1a4a88,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438334901792515114, guid: fb3631df4b066cc49ba3c355ae1a4a88,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.50137943
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438334901792515114, guid: fb3631df4b066cc49ba3c355ae1a4a88,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.0990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438334901792515114, guid: fb3631df4b066cc49ba3c355ae1a4a88,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 1.37
+      objectReference: {fileID: 0}
     - target: {fileID: 1438334901792515115, guid: fb3631df4b066cc49ba3c355ae1a4a88,
         type: 3}
       propertyPath: m_RootOrder
@@ -452,6 +472,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7060277219435553627, guid: dd5923067844f0441985a3750645add0,
+        type: 3}
+      propertyPath: weight
+      value: 0.009
       objectReference: {fileID: 0}
     - target: {fileID: 7060277219435553628, guid: dd5923067844f0441985a3750645add0,
         type: 3}

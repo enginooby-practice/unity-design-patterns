@@ -60,7 +60,8 @@ public class CubeSpawner : MonoBehaviour
         {
             for (int j = 0; j < dimY; j++)
             {
-                InstantiateEntity(new float3(i * spacing, j * spacing, 0f));
+                //InstantiateEntity(new float3(i * spacing, j * spacing, 0f));
+                MakeEntity(new float3(i * spacing, j * spacing, 0f));
             }
         }
     }
@@ -110,7 +111,8 @@ public class CubeSpawner : MonoBehaviour
             typeof(Rotation),
             typeof(RenderMesh),
             typeof(RenderBounds),
-            typeof(LocalToWorld)
+            typeof(LocalToWorld),
+            typeof(WaveMovementData)
             );
 
         Entity myEntity = entityManager.CreateEntity(archetype);
@@ -124,6 +126,12 @@ public class CubeSpawner : MonoBehaviour
         {
             mesh = unitMesh,
             material = unitMaterial
+        });
+        entityManager.SetComponentData(myEntity, new WaveMovementData
+        {
+            amplitude = 5f,
+            xOffset = 0.3f,
+            yOffset = 0.3f
         });
     }
 }
