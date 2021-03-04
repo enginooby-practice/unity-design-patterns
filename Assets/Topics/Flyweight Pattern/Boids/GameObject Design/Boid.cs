@@ -4,7 +4,7 @@ public class Boid : BoidBase
 {
     // shared data
     public string specieName;
-    public EndangeredStatus endangeredStatus;
+    public ENDANGERED_STATUS endangeredStatus;
 
     protected override void UpdateInfoPanel()
     {

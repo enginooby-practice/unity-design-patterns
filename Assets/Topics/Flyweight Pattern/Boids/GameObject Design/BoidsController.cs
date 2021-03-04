@@ -5,25 +5,30 @@ public class BoidsController : MonoBehaviour
 {
     public static BoidsController Instance;
 
-    [SerializeField] private int boidAmount;
+    enum MODE { None, Prefab, Scriptable_Prefab }
+    [SerializeField] private MODE mode = MODE.Prefab;
     [SerializeField] private Boid[] boidPrefabs;
+    [SerializeField] private BoidScriptable[] boidScriptablePrefabs;
 
+    [Header("BOID PARAMETERS")]
+    [SerializeField] private int boidAmount;
     public float boidSpeed;
     public float boidPerceptionRadius;
-    public float cageSize;
 
+    [Header("FORCE PARAMETERS")]
     public float separationWeight;
     public float cohesionWeight;
     public float alignmentWeight;
 
+    [Header("CAGE PARAMETERS")]
+    public float cageSize;
     public float avoidWallsWeight;
     public float avoidWallsTurnDist;
 
-    public List<Boid> boids;
+    public List<BoidBase> boids;
 
     private void Awake()
     {
-
         Instance = this;
         boids.Clear();
 
@@ -41,12 +46,23 @@ public class BoidsController : MonoBehaviour
             );
 
             int randomIndex = Random.Range(0, boidPrefabs.Length);
-            Boid newBoid = Instantiate(boidPrefabs[randomIndex], pos, rot).GetComponent<Boid>();
+            BoidBase newBoid = null;
+            switch (mode)
+            {
+                case MODE.None:
+                    break;
+                case MODE.Prefab:
+                    newBoid = Instantiate(boidPrefabs[randomIndex], pos, rot).GetComponent<BoidBase>();
+                    break;
+                case MODE.Scriptable_Prefab:
+                    newBoid = Instantiate(boidScriptablePrefabs[randomIndex], pos, rot).GetComponent<BoidBase>();
+                    break;
+            }
             boids.Add(newBoid);
         }
     }
 
-    public List<Boid> GetBoids() { return boids; }
+    public List<BoidBase> GetBoids() { return boids; }
 
     private void OnDrawGizmos()
     {

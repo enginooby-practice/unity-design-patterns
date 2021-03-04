@@ -224,12 +224,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0715e62b8cc634280869cf0d676ada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boidAmount: 3
+  mode: 1
+  boidAmount: 500
   boidPrefabs:
   - {fileID: 7221917887113062170, guid: 691a2ad8903d7684199562d01e6012e1, type: 3}
   - {fileID: 9069040632846253454, guid: dc6e962dee63e7542afe986b99fee424, type: 3}
   - {fileID: 2502637917838821036, guid: caa6fc23bcfc9264eabfe4f73a9b94ed, type: 3}
-  boidSpeed: 0.1
+  boidScriptablePrefabs:
+  - {fileID: -3728960180473340560, guid: 6c1135131a159e24b9e069db1872a836, type: 3}
+  - {fileID: 4065314502523162617, guid: c6a4eee65fd36c24985bb921b9fbeee2, type: 3}
+  - {fileID: 494731804831455126, guid: 7492b025152add24895b0a762a2bd2b2, type: 3}
+  boidSpeed: 10
   boidPerceptionRadius: 5
   cageSize: 100
   separationWeight: 25

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EndangeredStatus { CR, EN, VU }
-public enum Gender { MALE, FEMALE }
+public enum ENDANGERED_STATUS { CR, EN, VU }
+public enum GENDER { Male, Female }
 
 public class BoidBase : MonoBehaviour
 {
     // unique data
     protected int mass;
-    protected Gender gender;
+    protected GENDER gender;
 
     protected EPOOutline.Outlinable outline;
     protected BoidsController controller;
@@ -32,7 +32,7 @@ public class BoidBase : MonoBehaviour
     private void InitUniqueData()
     {
         mass = Random.Range(50, 100);
-        gender = (Random.Range(0f, 1f) < 0.5f) ? Gender.MALE : Gender.FEMALE;
+        gender = (Random.Range(0f, 1f) < 0.5f) ? GENDER.Male : GENDER.Female;
     }
 
 
@@ -45,7 +45,7 @@ public class BoidBase : MonoBehaviour
     protected virtual void UpdateInfoPanel()
     {
         infoPanel.massLabel.text = mass.ToString() + "g";
-        infoPanel.genderLabel.text = gender.ToString().ToLower();
+        infoPanel.genderLabel.text = gender.ToString();
     }
 
     private void Update()
