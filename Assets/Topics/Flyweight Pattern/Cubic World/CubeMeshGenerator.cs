@@ -94,7 +94,7 @@ public class CubeMeshGenerator : MonoBehaviour
         meshFilter.mesh = mesh;
     }
 
-    public static void CreateCube(int number, Vector3 pos)
+    public static void CreateCube(int name, Vector3 pos)
     {
         GameObject cube = new GameObject();
         cube.AddComponent<MeshFilter>();
@@ -121,7 +121,7 @@ public class CubeMeshGenerator : MonoBehaviour
         }
         cube.GetComponent<MeshFilter>().mesh = new Mesh();
         cube.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
-        cube.GetComponent<MeshFilter>().mesh.name = "CreatedCube_" + number;
+        cube.GetComponent<MeshFilter>().mesh.name = "CreatedCube_" + name;
         MeshRenderer rend = cube.GetComponent<MeshRenderer>();
         rend.material = new Material(Shader.Find("Universal Render Pipeline/Lit"));
         cube.gameObject.SetActive(true);

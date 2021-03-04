@@ -25,11 +25,11 @@ public class BoidBase : MonoBehaviour
         outline = GetComponent<EPOOutline.Outlinable>();
         controller = BoidsController.Instance;
         infoPanel = InfoPanel.Instance;
-        InitUniqueData();
+        SetUniqueData();
     }
 
 
-    private void InitUniqueData()
+    private void SetUniqueData()
     {
         mass = Random.Range(50, 100);
         gender = (Random.Range(0f, 1f) < 0.5f) ? GENDER.Male : GENDER.Female;
