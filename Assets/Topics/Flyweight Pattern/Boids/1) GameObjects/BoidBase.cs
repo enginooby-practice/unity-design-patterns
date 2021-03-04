@@ -38,11 +38,7 @@ public class BoidBase : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (controller.previousOutline) controller.previousOutline.enabled = false;
-        //outline.enabled = true;
-        controller.previousOutline = outline;
-
-        controller.Hightlight(this);
+        Hightlighter.Instance.Hightlight(gameObject);
         UpdateInfoPanel();
     }
 
