@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using EPOOutline;
 
 public class BoidsController : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class BoidsController : MonoBehaviour
 
     [SerializeField] private int boidAmount;
     [SerializeField] private Boid[] boidPrefabs;
-     public EPOOutline.Outlinable previousOutline;
+    public Outlinable previousOutline;
 
     public float boidSpeed;
     public float boidPerceptionRadius;
@@ -45,6 +46,13 @@ public class BoidsController : MonoBehaviour
             Boid newBoid = Instantiate(boidPrefabs[randomIndex], pos, rot).GetComponent<Boid>();
             boids.Add(newBoid);
         }
+    }
+
+    public void Hightlight(BoidBase boid)
+    {
+        var outlinable = boid.gameObject.AddComponent(typeof(Outlinable)) as Outlinable;
+        //the Outlinable will render the Renderer we have on the gameObject we adding the Outlinable
+        outlinable.OutlineTargets.Add(new OutlineTarget(boid.gameObject.GetComponent<Renderer>()));
     }
 
     public List<Boid> GetBoids() { return boids; }
